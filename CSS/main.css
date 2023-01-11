@@ -40,7 +40,8 @@ html {
 
 
 section .title {
-  margin: 3rem 0;
+  margin: 0;
+  margin-top: 3rem;
 }
 
 section .title h2 {
@@ -123,22 +124,32 @@ section .title h2 {
   color: var(--paragraphColor, #D4CCBC)
 }
 
-.main-grid .main-content button {
+.main-grid .main-content a {
   padding: .5rem 1.5rem;
-  border-radius: .5rem;
-  font-size: 1.25rem;
+  border-radius: .25rem;
   font-weight: bold;
   color: var(--paragraphColor, #D4CCBC);
-  border: 3px solid var(--paragraphColor, #D4CCBC);
+  border: 2px solid var(--paragraphColor, #D4CCBC);
   background-color: transparent;
-  cursor: pointer;
-  transition: var(--main-transition, .25s);
-  transition-property: color, background-colo;
+  text-decoration: none;
+  position: relative;
 }
-
-.main-grid .main-content button:hover {
+.main-grid .main-content a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--headerColor, #D4CCBC);
+  transition: var(--main-transition);
+  z-index: -1;
+}
+.main-grid .main-content a:hover::before {
+  width: 100%;
+}
+.main-grid .main-content a:hover {
   color: var(--background-color, #151515);
-  background-color: var(--paragraphColor, #D4CCBC);
 }
 
 @media (max-width: 767px) {
@@ -159,9 +170,12 @@ body {
 /* Section Header Styling */
 
 header {
-  background-color: #D9D9D9;
+  background-color: var(--headerColor, #D4CCBC) ;
   color: var(--background-color, #151515);
-  position: relative;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  
 }
 
 header .container {
@@ -378,14 +392,52 @@ header .container ul li a:hover {
   overflow: hidden;
   overflow-x: scroll;
   border-radius: .25rem;
+  gap: 1rem;
 }
 .images::-webkit-scrollbar {
   display: none;
 }
 .project-1 .images img {
-  width: 90%;
+  width: 110%;
   display: block;
+  border-radius: .25rem;
 }
+
+.p-1 .container .boxes {
+  display: grid;
+  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+.p-1 .container .boxes .box {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  display: grid;
+  gap: 1rem;
+  border-radius: .25rem;
+
+}
+.p-1 .container .boxes .box p:first-child {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.p-1 .container .boxes .box p:not(:first-child) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.p-1 .container .boxes .box p span {
+  color: var(--background-color, #151515);
+  background-color: var(--headerColor, #D4CCBC);
+  border-radius: .25rem;
+  font-size: .9rem;
+  padding: .05rem;
+  font-weight: bold;
+}
+
+
+
+
+
 
 
 /* Animation Time */
